@@ -11,24 +11,11 @@ packages<-function(x){
 packages(dplyr)    # data management made simple
 packages(ggplot2)  # makes very nice stylized plots
 packages(xtable)   # makes formatted html tables
-packages(RCurl)    # read data from URLs
+packages(httr)     # read data from web URLs
 packages(rjson)    # deal with JSON data files
-
-
-###################################################################
-#   Loading up external values and functions
-###################################################################
-source("OAuthAccessToken.R")       # access token and api key
-source("getDataframeFromJSON.R")   # function to get data into a dataframe
 
 
 ###################################################################
 #   Getting data from the IDEA ReST interface
 ###################################################################
-IDEA_JSON = getURL(url = paste("https://rest.ideasystem.org/IDEA-REST-SERVER/v1/
-			       responses/:surveyID
-			       ?access_token=", access_token,
-			       "&api_key=", api_key, sep=""))
-
-IDEA.dataframe <- getDataframeFromJSON(IDEA_JSON)
-
+IDEA_JSON <- GET("https://rest.ideasystem.org/IDEA-REST-SERVER/v1/reports?institution=002260", add_headers("X-IDEA_APPNAME"="FerrisState", "X-IDEA-KEY"="DVsAXkimDc7N"))
