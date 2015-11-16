@@ -18,4 +18,5 @@ packages(rjson)    # deal with JSON data files
 ###################################################################
 #   Getting data from the IDEA ReST interface
 ###################################################################
-IDEA_JSON <- GET("https://rest.ideasystem.org/IDEA-REST-SERVER/v1/reports?institution=002260", add_headers('X-IDEA_APPNAME'='FerrisState', 'X-IDEA-KEY'='DVsAXkimDc7N'))
+
+IDEA_JSON <- GET('https://rest.ideasystem.org/IDEA-REST-SERVER/v1/forms', add_headers('X-IDEA-APPNAME' = 'FerrisState', 'X-IDEA-KEY' = 'DVsAXkimDc7N'), verbose())
