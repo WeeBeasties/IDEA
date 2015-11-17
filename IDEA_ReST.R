@@ -14,9 +14,12 @@ packages(xtable)   # makes formatted html tables
 packages(httr)     # read data from web URLs
 packages(rjson)    # deal with JSON data files
 
+source("OAuthAccessToken.R")
 
 ###################################################################
 #   Getting data from the IDEA ReST interface
 ###################################################################
 
-IDEA_JSON <- GET('https://rest.ideasystem.org/IDEA-REST-SERVER/v1/forms', add_headers('X-IDEA-APPNAME' = 'FerrisState', 'X-IDEA-KEY' = 'DVsAXkimDc7N'), verbose())
+IDEA_JSON <- GET('https://rest.ideasystem.org/IDEA-REST-SERVER/v1/surveys?discipline_code:2600', add_headers('X-IDEA-APPNAME' = access_token, 'X-IDEA-KEY' = api_key), verbose())
+mySurveys <-  fromJSON(rawToChar(IDEA_JSON$content))
+
