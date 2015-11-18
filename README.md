@@ -7,3 +7,10 @@ This project explores some ways to analyze IDEA course evaluation data for progr
 ### Authentication  
 
 Authentication information is included in a file called `OAuthAccessToken.R`. This file contains two lines:  
+>access_token <- "##"  
+>api_key <- "##"  
+The values for these variables are determined by the folks at IDEA, and will be provided to you.  
+
+### Data Organization  
+
+In order to access the IDEA data using the ReST API, we must first understand how it structured.
