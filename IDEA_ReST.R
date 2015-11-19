@@ -20,7 +20,7 @@ source("OAuthAccessToken.R")
 #   Getting data from the IDEA ReST interface
 ###################################################################
 
-IDEA_JSON <- GET('https://rest.ideasystem.org/IDEA-REST-SERVER/v1/surveys?max=100&survey_year=2013&rater_form=9', add_headers('X-IDEA-APPNAME' = access_token, 'X-IDEA-KEY' = api_key), verbose())
+IDEA_JSON <- GET('https://rest.ideasystem.org/IDEA-REST-SERVER/v1/surveys', max=100, add_headers('X-IDEA-APPNAME' = access_token, 'X-IDEA-KEY' = api_key), verbose())
 mySurveys <-  fromJSON(rawToChar(IDEA_JSON$content))
 
 courses <- list()

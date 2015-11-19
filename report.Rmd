@@ -1,0 +1,45 @@
+---
+title: "IDEA Report on Collaboration in Biology Courses"
+author: "Dr. Clifton Franklund"
+date: "November 19, 2015"
+header-includes: 
+   \usepackage{graphicx}
+   \usepackage{fancyhdr}
+   \pagestyle{fancy}
+   \setlength\headheight{28pt}
+   \fancyhead[L]{\includegraphics[width=5cm]{FSU_Logo.png}}
+   \fancyfoot[LE,RO]{GPIM}
+output: pdf_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r Set up, echo=FALSE, message=FALSE, warning=FALSE}
+###################################################################
+#   Install and load the packages needed
+###################################################################
+packages<-function(x){
+	x<-as.character(match.call()[[2]])
+	if (!require(x,character.only=TRUE)){
+		install.packages(pkgs=x,repos="http://cran.r-project.org")
+		require(x,character.only=TRUE)
+	}
+}
+packages(dplyr)    # data management made simple
+packages(ggplot2)  # makes very nice stylized plots
+packages(xtable)   # makes formatted html tables
+packages(httr)     # read data from web URLs
+packages(rjson)    # deal with JSON data files
+
+source("OAuthAccessToken.R")
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
